@@ -31,6 +31,9 @@
 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1157348587" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.656391967" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug">
+<option id="gnu.c.link.option.libs.1492149116" superClass="gnu.c.link.option.libs" valueType="libs">
+<listOptionValue builtIn="false" value="apr-1"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1288082745" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 <additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -131,6 +134,8 @@
 </profile>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="cdt.managedbuild.config.gnu.exe.release.1427815301">
 <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.release.1427815301" moduleId="org.eclipse.cdt.core.settings" name="Release">
@@ -260,6 +265,8 @@
 </profile>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
