@@ -72,14 +72,21 @@ typedef struct tpl_object_t {
 } tpl_object_t;
 
 tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str);
-tpl_object_t* tpl_create_array(tpl_object_t* parent);
+
+tpl_object_t* tpl_create_array(tpl_object_t* parent, tpl_int_t i_len);
+tpl_object_t* tpl_array_get(tpl_object_t* array, tpl_uint_t index);
+tpl_object_t* tpl_array_push(tpl_object_t* array, tpl_object_t* obj);
+tpl_int_t tpl_array_length(tpl_object_t* array);
+
 tpl_object_t* tpl_create_map(tpl_object_t* parent);
-tpl_object_t* tpl_create_boolean(tpl_object_t* parent);
-tpl_object_t* tpl_create_float(tpl_object_t* parent);
-tpl_object_t* tpl_create_double(tpl_object_t* parent);
-tpl_object_t* tpl_create_int(tpl_object_t* parent);
-tpl_object_t* tpl_create_uint(tpl_object_t* parent);
+tpl_object_t* tpl_create_boolean(tpl_object_t* parent, tpl_bool_t bool_val);
+tpl_object_t* tpl_create_float(tpl_object_t* parent, tpl_float_t f);
+tpl_object_t* tpl_create_double(tpl_object_t* parent, tpl_double_t df);
+tpl_object_t* tpl_create_int(tpl_object_t* parent, tpl_int_t i);
+tpl_object_t* tpl_create_uint(tpl_object_t* parent, tpl_uint_t ui);
+
 tpl_bool_t tpl_destroy_object(tpl_object_t* obj);
+tpl_bool_t tpl_empty_object(tpl_object_t* obj);
 
 //Here it must never be null.
 tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
