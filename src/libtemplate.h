@@ -8,6 +8,8 @@
 #ifndef LIBTEMPLATE_H_
 #define LIBTEMPLATE_H_
 
+#define TPL_VERBOSE 1
+
 typedef double tpl_double_t;
 typedef float tpl_float_t;
 typedef int tpl_int_t;
@@ -70,27 +72,16 @@ typedef struct tpl_object_t {
 } tpl_object_t;
 
 tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str);
-tpl_bool_t tpl_destroy_string(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_array(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_array(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_map(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_map(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_boolean(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_boolean(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_float(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_float(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_double(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_double(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_int(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_int(tpl_object_t* obj);
-
 tpl_object_t* tpl_create_uint(tpl_object_t* parent);
-tpl_bool_t tpl_destroy_uint(tpl_object_t* obj);
+tpl_bool_t tpl_destroy_object(tpl_object_t* obj);
+
+//Here it must never be null.
+tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
 
 #endif /* LIBTEMPLATE_H_ */

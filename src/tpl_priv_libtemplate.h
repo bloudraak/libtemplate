@@ -18,14 +18,4 @@
 #define unlikely
 #endif
 
-typedef struct tpl_object_generic {
-	apr_pool_t* pool;
-	tpl_bool_t has_parent;
-} tpl_object_generic;
-
-typedef struct tpl_object_string {
-	tpl_object_generic base_object;
-	tpl_char_t* str;
-} tpl_object_string;
-
 #endif /* PRIV_LIBTEMPLATE_H_ */

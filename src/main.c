@@ -13,6 +13,10 @@
 #include "libtemplate.h"
 
 int main(void) {
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	tpl_initialize();
+	tpl_object_t* str = tpl_create_string(0, "Test small string.");
+	tpl_object_t* child_str = tpl_create_string(str, "Test small string.");
+
+	tpl_destroy_object(str);
 	return EXIT_SUCCESS;
 }
