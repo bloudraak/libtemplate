@@ -75,10 +75,16 @@ tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str);
 
 tpl_object_t* tpl_create_array(tpl_object_t* parent, tpl_int_t i_len);
 tpl_object_t* tpl_array_get(tpl_object_t* array, tpl_uint_t index);
+tpl_bool_t tpl_array_pop(tpl_object_t* array);
 tpl_object_t* tpl_array_push(tpl_object_t* array, tpl_object_t* obj);
 tpl_int_t tpl_array_length(tpl_object_t* array);
+tpl_bool_t tpl_array_clear(tpl_object_t* array);
 
 tpl_object_t* tpl_create_map(tpl_object_t* parent);
+tpl_object_t* tpl_map_get(tpl_object_t* map, tpl_char_t* key);
+tpl_int_t tpl_map_set(tpl_object_t* map, tpl_char_t* key, tpl_object_t* obj);
+tpl_bool_t tpl_map_clear(tpl_object_t* map);
+
 tpl_object_t* tpl_create_boolean(tpl_object_t* parent, tpl_bool_t bool_val);
 tpl_object_t* tpl_create_float(tpl_object_t* parent, tpl_float_t f);
 tpl_object_t* tpl_create_double(tpl_object_t* parent, tpl_double_t df);
