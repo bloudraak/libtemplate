@@ -208,5 +208,7 @@ tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2) {
 	if (likely(obj1->type == tpl_type_string_t)) {
 		return strcmp(l_obj1->tpl_variant.str, l_obj2->tpl_variant.str) == 0;
 	}
+
+	return tpl_false;
 }
 
