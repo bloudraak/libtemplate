@@ -94,6 +94,8 @@ tpl_object_t* tpl_create_uint(tpl_object_t* parent, tpl_uint_t ui);
 tpl_bool_t tpl_destroy_object(tpl_object_t* obj);
 tpl_bool_t tpl_empty_object(tpl_object_t* obj);
 
+tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2);
+
 //Here it must never be null.
 tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
 

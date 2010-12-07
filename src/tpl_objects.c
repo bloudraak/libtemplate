@@ -196,3 +196,17 @@ tpl_object_t* tpl_create_uint(tpl_object_t* parent, tpl_uint_t ui) {
 	return ret;
 }
 
+tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2) {
+	if (unlikely(obj1==0 || obj2==0
+			|| obj1->type !=obj2->type)) {
+		return tpl_false;
+	}
+
+	tpl_object_generic * l_obj1 = (tpl_object_generic*) obj1->content;
+	tpl_object_generic * l_obj2 = (tpl_object_generic*) obj2->content;
+
+	if (likely(obj1->type == tpl_type_string_t)) {
+		return strcmp(l_obj1->tpl_variant.str, l_obj2->tpl_variant.str) == 0;
+	}
+}
+
