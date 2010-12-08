@@ -25,8 +25,8 @@ typedef unsigned char tpl_byte_t;
 tpl_ptr_t* tpl_initialize();
 tpl_int_t tpl_uninitialize();
 
-tpl_int_t tpl_get_last_error_code();
-tpl_char_t* tpl_get_last_error_msg();
+tpl_int_t tpl_get_last_error_code(tpl_ptr_t* lib_handle);
+tpl_char_t* tpl_get_last_error_msg(tpl_ptr_t* lib_handle);
 
 typedef struct tpl_input_stream_t tpl_input_stream_t;
 typedef tpl_char_t (*tpl_read_t)(tpl_input_stream_t* is);
@@ -104,13 +104,19 @@ typedef struct tpl_template_context_t tpl_template_context_t;
 typedef tpl_int_t (*tpl_execute_t)(tpl_template_elem_t* tpl_e,
 		tpl_output_stream_t* out);
 typedef tpl_int_t (*tpl_validate_t)(tpl_template_elem_t* tpl_e);
+typedef tpl_int_t (*tpl_destructor_t)(tpl_template_elem_t* tpl_e);
 
 struct tpl_template_elem_t {
-	tpl_template_context_t* tpl_context;
+	tpl_template_context_t* template_context;
+	tpl_template_context_t* provided_context;
 	tpl_template_context_t* params;
 	tpl_template_context_t* children;
 	tpl_execute_t execute;
 	tpl_validate_t validate;
+	tpl_destructor_t destructor;
 };
+
+tpl_object_t* tpl_get_object_map(tpl_template_context_t* context);
+tpl_ptr_t* tpl_alloc(tpl_object_t* parent, tpl_uint_t size);
 
 #endif /* LIBTEMPLATE_H_ */
