@@ -53,8 +53,6 @@ struct tpl_output_stream_t {
 	tpl_wclose_t close;
 };
 
-typedef tpl_ptr_t tpl_template_t;
-
 typedef enum tpl_type_obj_t {
 	tpl_type_int_t,
 	tpl_type_uint_t,
@@ -98,5 +96,21 @@ tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2);
 
 //Here it must never be null.
 tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
+
+typedef struct tpl_template_t tpl_template_t;
+typedef struct tpl_template_elem_t tpl_template_elem_t;
+typedef struct tpl_template_context_t tpl_template_context_t;
+
+typedef tpl_int_t (*tpl_execute_t)(tpl_template_elem_t* tpl_e,
+		tpl_output_stream_t* out);
+typedef tpl_int_t (*tpl_validate_t)(tpl_template_elem_t* tpl_e);
+
+struct tpl_template_elem_t {
+	tpl_template_context_t* tpl_context;
+	tpl_template_context_t* params;
+	tpl_template_context_t* children;
+	tpl_execute_t execute;
+	tpl_validate_t validate;
+};
 
 #endif /* LIBTEMPLATE_H_ */
