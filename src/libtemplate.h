@@ -70,6 +70,8 @@ typedef struct tpl_object_t {
 } tpl_object_t;
 
 tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str);
+tpl_object_t* tpl_create_string_with_len(tpl_object_t* parent, tpl_char_t* str,
+		tpl_uint_t length);
 
 tpl_object_t* tpl_create_array(tpl_object_t* parent, tpl_int_t i_len);
 tpl_object_t* tpl_array_get(tpl_object_t* array, tpl_uint_t index);
@@ -93,6 +95,7 @@ tpl_bool_t tpl_destroy_object(tpl_object_t* obj);
 tpl_bool_t tpl_empty_object(tpl_object_t* obj);
 
 tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2);
+tpl_ptr_t tpl_get_raw_ptr(tpl_object_t* obj);
 
 //Here it must never be null.
 tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
@@ -118,5 +121,6 @@ struct tpl_template_elem_t {
 
 tpl_object_t* tpl_get_object_map(tpl_template_context_t* context);
 tpl_ptr_t* tpl_alloc(tpl_object_t* parent, tpl_uint_t size);
+tpl_ptr_t* tpl_alloc_on_ctx(tpl_template_context_t* parent, tpl_uint_t size);
 
 #endif /* LIBTEMPLATE_H_ */

@@ -16,6 +16,7 @@
 typedef struct tpl_object_generic {
 	apr_pool_t* pool;
 	tpl_bool_t has_parent;
+	tpl_uint_t str_length;
 	union {
 		tpl_char_t* str;
 		tpl_int_t i;

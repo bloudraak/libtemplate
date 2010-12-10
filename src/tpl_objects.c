@@ -56,7 +56,19 @@ tpl_bool_t tpl_empty_object(tpl_object_t* obj) {
 tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str) {
 	TPL_INIT_OBJECT
 
+	l_obj->str_length = strlen(str);
 	l_obj->tpl_variant.str = apr_pstrdup(mp, str);
+	ret->type = tpl_type_string_t;
+
+	return ret;
+}
+
+tpl_object_t* tpl_create_string_with_len(tpl_object_t* parent, tpl_char_t* str,
+		tpl_uint_t length) {
+	TPL_INIT_OBJECT
+
+	l_obj->str_length = length;
+	l_obj->tpl_variant.str = apr_pstrndup(mp, str, length);
 	ret->type = tpl_type_string_t;
 
 	return ret;
@@ -210,5 +222,10 @@ tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2) {
 	}
 
 	return tpl_false;
+}
+
+tpl_ptr_t tpl_get_raw_ptr(tpl_object_t* obj) {
+	tpl_object_generic * l_obj = (tpl_object_generic*) obj->content;
+	return l_obj->tpl_variant.str;
 }
 
