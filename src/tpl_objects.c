@@ -74,6 +74,15 @@ tpl_object_t* tpl_create_string_with_len(tpl_object_t* parent, tpl_char_t* str,
 	return ret;
 }
 
+tpl_int_t tpl_string_length(tpl_object_t* str) {
+	if (unlikely(str->type != tpl_type_string_t)) {
+		return -1;
+	}
+
+	tpl_object_generic* base_obj = (tpl_object_generic*) str->content;
+	return base_obj->str_length;
+}
+
 tpl_object_t* tpl_create_array(tpl_object_t* parent, tpl_int_t i_len) {
 	TPL_INIT_OBJECT
 

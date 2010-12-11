@@ -72,6 +72,7 @@ typedef struct tpl_object_t {
 tpl_object_t* tpl_create_string(tpl_object_t* parent, tpl_char_t* str);
 tpl_object_t* tpl_create_string_with_len(tpl_object_t* parent, tpl_char_t* str,
 		tpl_uint_t length);
+tpl_int_t tpl_string_length(tpl_object_t* str);
 
 tpl_object_t* tpl_create_array(tpl_object_t* parent, tpl_int_t i_len);
 tpl_object_t* tpl_array_get(tpl_object_t* array, tpl_uint_t index);

@@ -14,7 +14,7 @@ struct tpl_template_context_t {
 };
 
 struct tpl_template_t {
-
+	tpl_template_context_t* context;
 };
 
 #endif /* TPL_TEMPLATE_ELEMS_H_ */
