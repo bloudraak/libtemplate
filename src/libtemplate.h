@@ -110,6 +110,7 @@ typedef tpl_int_t (*tpl_validate_t)(tpl_template_elem_t* tpl_e);
 typedef tpl_int_t (*tpl_destructor_t)(tpl_template_elem_t* tpl_e);
 
 struct tpl_template_elem_t {
+	tpl_ptr_t data;
 	tpl_template_context_t* template_context;
 	tpl_template_context_t* provided_context;
 	tpl_template_context_t* params;
@@ -122,5 +123,12 @@ struct tpl_template_elem_t {
 tpl_object_t* tpl_get_object_map(tpl_template_context_t* context);
 tpl_ptr_t* tpl_alloc(tpl_object_t* parent, tpl_uint_t size);
 tpl_ptr_t* tpl_alloc_on_ctx(tpl_template_context_t* parent, tpl_uint_t size);
+
+//Element array
+
+tpl_bool_t tpl_register_element(tpl_char_t* name, tpl_execute_t execute,
+		tpl_validate_t validate, tpl_destructor_t destructor);
+tpl_template_elem_t* tpl_array_get(tpl_elem_array_t* array, tpl_uint_t index);
+tpl_int_t tpl_array_length(tpl_elem_array_t* array);
 
 #endif /* LIBTEMPLATE_H_ */
