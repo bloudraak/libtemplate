@@ -8,8 +8,6 @@
 #ifndef LIBTEMPLATE_H_
 #define LIBTEMPLATE_H_
 
-#define TPL_VERBOSE 1
-
 typedef double tpl_double_t;
 typedef float tpl_float_t;
 typedef int tpl_int_t;
@@ -92,8 +90,8 @@ tpl_object_t* tpl_create_double(tpl_object_t* parent, tpl_double_t df);
 tpl_object_t* tpl_create_int(tpl_object_t* parent, tpl_int_t i);
 tpl_object_t* tpl_create_uint(tpl_object_t* parent, tpl_uint_t ui);
 
-tpl_bool_t tpl_destroy_object(tpl_object_t* obj);
-tpl_bool_t tpl_empty_object(tpl_object_t* obj);
+tpl_bool_t tpl_destroy_object(tpl_object_t** obj);
+tpl_bool_t tpl_empty_object(tpl_object_t** obj);
 
 tpl_bool_t tpl_object_equal(tpl_object_t* obj1, tpl_object_t* obj2);
 tpl_ptr_t tpl_get_raw_ptr(tpl_object_t* obj);
@@ -104,6 +102,7 @@ tpl_char_t* tpl_object_to_cstring(tpl_object_t* parent, tpl_object_t* obj);
 typedef struct tpl_template_t tpl_template_t;
 typedef struct tpl_template_elem_t tpl_template_elem_t;
 typedef struct tpl_template_context_t tpl_template_context_t;
+typedef struct tpl_elem_array_t tpl_elem_array_t;
 
 typedef tpl_int_t (*tpl_execute_t)(tpl_template_elem_t* tpl_e,
 		tpl_output_stream_t* out);
@@ -114,7 +113,7 @@ struct tpl_template_elem_t {
 	tpl_template_context_t* template_context;
 	tpl_template_context_t* provided_context;
 	tpl_template_context_t* params;
-	tpl_template_context_t* children;
+	tpl_elem_array_t* children;
 	tpl_execute_t execute;
 	tpl_validate_t validate;
 	tpl_destructor_t destructor;

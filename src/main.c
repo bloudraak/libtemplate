@@ -22,7 +22,7 @@ int main(void) {
 	child_str = tpl_map_get(map, "test");
 
 	printf("Strings are equal %i\n", tpl_object_equal(str, child_str));
-
-	tpl_destroy_object(str);
+	tpl_empty_object(&str);
+	tpl_destroy_object(&str);
 	return EXIT_SUCCESS;
 }

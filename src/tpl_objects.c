@@ -11,8 +11,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-tpl_bool_t tpl_destroy_object(tpl_object_t* obj) {
-	tpl_object_generic* base_obj = (tpl_object_generic*) obj->content;
+tpl_bool_t tpl_destroy_object(tpl_object_t** obj) {
+	tpl_object_generic* base_obj = (tpl_object_generic*) (*obj)->content;
 	if (unlikely(base_obj->has_parent == tpl_false)) {
 		return tpl_false;
 	}
@@ -21,13 +21,31 @@ tpl_bool_t tpl_destroy_object(tpl_object_t* obj) {
 	return tpl_true;
 }
 
-tpl_bool_t tpl_empty_object(tpl_object_t* obj) {
-	tpl_object_generic* base_obj = (tpl_object_generic*) obj->content;
+tpl_bool_t tpl_empty_object(tpl_object_t** obj) {
+	tpl_object_generic* base_obj = (tpl_object_generic*) (*obj)->content;
 	if (unlikely(base_obj->has_parent == tpl_false)) {
 		return tpl_false;
 	}
 
-	apr_pool_clear(base_obj->pool);
+	tpl_object_t lobj;
+	tpl_object_generic obj_gen;
+
+	lobj.type = (*obj)->type;
+	obj_gen.pool = base_obj->pool;
+	obj_gen.has_parent = tpl_false;
+	apr_pool_clear(obj_gen.pool);
+
+	tpl_object_t* retObj = apr_palloc(obj_gen.pool, sizeof(tpl_object_t));
+	tpl_object_generic * retObj_gen = apr_palloc(obj_gen.pool,
+			sizeof(tpl_object_generic));
+
+	retObj->type = lobj.type;
+	retObj->content = retObj_gen;
+	retObj_gen->has_parent = obj_gen.has_parent;
+	retObj_gen->pool = obj_gen.pool;
+
+	*obj = retObj;
+
 	return tpl_true;
 }
 
